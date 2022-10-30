@@ -39,7 +39,7 @@ export default class IDE extends Component {
         method: "POST",
         headers: {
           "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-          "x-rapidapi-key": "8ac1b6c0d1msh3c0cb10d68a04dap192a5cjsn46c9aca7a0da", // Get yours for free at https://rapidapi.com/judge0-official/api/judge0-ce/
+          "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY, // Get yours for free at https://rapidapi.com/judge0-official/api/judge0-ce/
           "content-type": "application/json",
           accept: "application/json",
         },
