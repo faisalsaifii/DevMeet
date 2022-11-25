@@ -7,12 +7,16 @@ import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <VideoPlayer />
-      <Options>
-        <Notifications />
-      </Options>
-      <Compiler />
+    <div className='main'>
+      <div className='left'>
+        <VideoPlayer />
+        <Options>
+          <Notifications />
+        </Options>
+      </div>
+      <div className='right'>
+        <Compiler />
+      </div>
     </div>
   );
 }

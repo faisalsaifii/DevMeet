@@ -13,18 +13,18 @@ const VideoPlayer = () => {
     call
   } = useContext(SocketContext);
   return (
-    <div className='container'>
+    <div className='vids'>
       {stream && (
-        <div>
-          <h1>{name || 'Me'}</h1>
+        <div className='left'>
           <video playsInline muted ref={myVideo} autoPlay />
-      </div>
+          {name || 'Me'}
+        </div>
       )}
       {
         callAccepted && !callEnded && (
-          <div>
-            <h1>{call.name || 'name'}</h1>
+          <div className='right'>
             <video playsInline ref={userVideo} autoPlay />
+            {call.name || 'name'}
           </div>
         )
       }

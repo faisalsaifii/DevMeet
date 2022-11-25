@@ -21,7 +21,6 @@ const Options = ({ children }) => {
   return (
     <div>
         <div>
-          <h2>Account Info</h2>
           <label>
             Name
             <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
@@ -33,7 +32,6 @@ const Options = ({ children }) => {
           </CopyToClipboard>
         </div>
         <div>
-          <h2>Make a call</h2>
           <label>
             ID to call
             <input type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} />

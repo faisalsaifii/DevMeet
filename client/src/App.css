@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+}
+
+.left {
+    flex: 50%;
+}
+
+.right {
+    flex: 50%;
+}
+  
+
+@media (max-width: 800px) {
+    .main {
+        flex-direction: column;
+    }
+    .right, .left {
+        flex: 100%;
+    }
+}

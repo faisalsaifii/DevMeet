@@ -1,4 +1,26 @@
-body {
-    height: 80%;
-    width: 50%;
+video {
+    width: inherit;
+    border-radius: 10px;
+}
+
+.vids {
+    display: flex;
+}
+
+.left, .right {
+    display: grid;
+    padding: 10px;
+    margin: 2px;
+    height: auto;
+    background-color: #000;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .vids {
+        flex-direction: column;
+    }
+    .right, .left {
+        flex: 100%;
+    }
 }

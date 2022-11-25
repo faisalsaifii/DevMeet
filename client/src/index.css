@@ -1,7 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap');
+
 body {
     margin: 0;
     padding: 0;
-    background: rgb(18, 18, 18);
+    background: rgb(73, 73, 73);
+    color: #eeeeee;
+    font-size: large;
+    font-family: 'Outfit', sans-serif;
+}
+
+button {
+    background-color: #00adb5;
+    color: white;
+    border-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #00acb5d3;
+}
+
+input {
+    background-color: #000;
+    color: #eeeeee;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #000;
+    margin: 10px;
+}
+
+textarea {
+    background-color: #000;
+    border-radius: 10px;
     color: #fff;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+}
+
+select {
+    background-color: #000;
+    color: #eee;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #00adb5;
 }
