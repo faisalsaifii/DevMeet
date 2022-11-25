@@ -33,6 +33,7 @@ input {
     width: 75%;
     border-radius: 10px 0px 0px 10px;
     border-color: #000;
+    margin-top: 2px;
 }
 
 textarea {
