@@ -97,8 +97,8 @@ export default class Compiler extends Component {
   render() { 
     return (
       <div className="compiler">
-        <div className="row container-fluid">
-          <div className="col-6 ml-4 ">
+        <div className="fields">
+          <div className="code">
             <textarea
               required
               name="solution"
@@ -108,13 +108,11 @@ export default class Compiler extends Component {
               value={this.state.input}
             ></textarea>
           </div>
-          <div className="col-5">
-            <div>
-              <span className="badge badge-info heading my-2 ">
-                <i className="fas fa-exclamation fa-fw fa-md"></i> Output
-              </span>
-              <textarea id="output"></textarea>
-            </div>
+          <div className="outputContainer">
+            <span className="badge badge-info heading my-2 ">
+              <i className="fas fa-exclamation fa-fw fa-md"></i> Output
+            </span>
+            <textarea id="output"></textarea>
           </div>
           <div className="mt-2 ml-5">
           <span className="badge badge-primary heading my-2 ">
@@ -142,7 +140,6 @@ export default class Compiler extends Component {
           <option value="71">Python</option>
         </select>
         </div>
-        
       </div>
     );
   }

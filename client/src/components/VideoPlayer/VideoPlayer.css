@@ -1,26 +1,24 @@
 video {
-    width: inherit;
     border-radius: 10px;
 }
 
-.vids {
+.vidsContainer {
     display: flex;
 }
 
-.left, .right {
+.myVideo, .userVideo {
     display: grid;
     padding: 10px;
     margin: 2px;
-    height: auto;
-    background-color: #000;
     border-radius: 10px;
+    width: fit-content;
 }
 
 @media (max-width: 800px) {
-    .vids {
+    .vidsContainer {
         flex-direction: column;
     }
-    .right, .left {
+    .myVideo, .userVideo {
         flex: 100%;
     }
 }

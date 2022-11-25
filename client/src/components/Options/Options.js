@@ -19,7 +19,7 @@ const Options = ({ children }) => {
   const [idToCall, setIdToCall] = useState('')
   
   return (
-    <div>
+    <div className='optionsContainer'>
         <div>
           <label>
             Name

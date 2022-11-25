@@ -1,13 +1,14 @@
 .main {
     display: flex;
+    height: 100vh;
 }
 
 .left {
-    flex: 50%;
+    flex: 30%;
 }
 
 .right {
-    flex: 50%;
+    flex: 70%;
 }
   
 

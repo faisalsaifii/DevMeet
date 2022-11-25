@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: rgb(73, 73, 73);
+    background: #222831;
     color: #eeeeee;
     font-size: large;
     font-family: 'Outfit', sans-serif;
@@ -35,7 +35,6 @@ textarea {
     background-color: #000;
     border-radius: 10px;
     color: #fff;
-    width: 100%;
 }
 
 select {
