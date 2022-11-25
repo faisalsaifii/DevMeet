@@ -1,9 +1,11 @@
 video {
     border-radius: 10px;
+    width: inherit;
 }
 
 .vidsContainer {
     display: flex;
+    flex-direction: column;
 }
 
 .myVideo, .userVideo {
@@ -11,14 +13,12 @@ video {
     padding: 10px;
     margin: 2px;
     border-radius: 10px;
-    width: fit-content;
 }
 
-@media (max-width: 800px) {
-    .vidsContainer {
-        flex-direction: column;
-    }
-    .myVideo, .userVideo {
-        flex: 100%;
-    }
+.myVideo {
+    width: 90%;
+}
+
+.userVideo {
+    width: 99%;
 }

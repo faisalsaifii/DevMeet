@@ -5,6 +5,10 @@ import { SocketContext } from '../../Context'
 
 import './Options.css'
 
+import CallIcon from './call.svg'
+import CopyIcon from './copy.svg'
+import EndCallIcon from './cut.svg'
+
 const Options = ({ children }) => {
   const {
     me,
@@ -21,32 +25,26 @@ const Options = ({ children }) => {
   return (
     <div className='optionsContainer'>
         <div>
-          <label>
-            Name
-            <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <CopyToClipboard text={me}>
-            <button>
-              Copy ID
-            </button>
-          </CopyToClipboard>
+            <input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='name'/>
+            <CopyToClipboard text={me}>
+              <button>
+                <img src={CopyIcon} alt='Copy ID'/>
+              </button>
+            </CopyToClipboard>
         </div>
         <div>
-          <label>
-            ID to call
-            <input type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} />
-          </label>
+            <input type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} placeholder='ID to Call'/>
           { callAccepted && !callEnded ? (
             <button
               onClick={leaveCall}
             >
-              Hang Up
+              <img src={EndCallIcon} alt='Hang Up'/>
             </button>
             ) : (
             <button
               onClick={() => callUser(idToCall)}
             >
-              Call
+              <img src={CallIcon} alt='Call'/>
             </button>
           )}
         </div>

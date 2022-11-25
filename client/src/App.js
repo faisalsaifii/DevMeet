@@ -16,7 +16,6 @@ function App() {
       </div>
       <div className='right'>
         <Compiler />
-        
       </div>
     </div>
   );
