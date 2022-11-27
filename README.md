@@ -2,6 +2,10 @@
 
 Became tired of companies still using zoom or google meet to take coding interviews which have nowhere to code. They even make you code in google docs because of this. So this allows the companies to conduct their coding interviews with an in-built IDE which supports the majority of the languages.
 
+[Live Application](https://faisalsaifii.github.io/Coding-Interview-Platform/)
+
+![Preview](Preview.png)
+
 ## **Backend Dependencies**
 
 ### **Express**
