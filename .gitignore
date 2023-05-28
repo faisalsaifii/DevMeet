@@ -1,4 +1,4 @@
 node_modules
-/clients/node_modules
+client/node_modules
 .vscode
 .env
