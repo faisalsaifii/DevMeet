@@ -98,6 +98,10 @@ const Compiler = () => {
 		<div className='compiler'>
 			<div className='fields'>
 				<div className='code'>
+					<span className='badge badge-info heading my-2 '>
+						<i className='fas fa-exclamation fa-fw fa-md'></i>{' '}
+						Code
+					</span>
 					<textarea
 						required
 						name='solution'
