@@ -4,7 +4,6 @@ import RunIcon from './run.svg';
 
 const Compiler = () => {
 	const [input, setInput] = useState(localStorage.getItem('input') || '');
-	const [output, setOutput] = useState('');
 	const [languageId, setLanguageId] = useState(
 		localStorage.getItem('language_Id') || 2
 	);
