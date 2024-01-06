@@ -31,7 +31,6 @@ const VideoPlayer = () => {
           </span>
         </div>
       )}
-
     </div>
   )
 }
