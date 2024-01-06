@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import './VideoPlayer.css'
 import { SocketContext } from '../../Context'
 
 const VideoPlayer = () => {
@@ -13,24 +12,26 @@ const VideoPlayer = () => {
     call
   } = useContext(SocketContext);
   return (
-    <div className='vidsContainer'>
+    <div className='flex flex-col'>
       {
         callAccepted && !callEnded && (
-          <div className='userVideo'>
-            <video playsInline ref={userVideo} autoPlay />
-            <div>{call.name || 'Someone'}</div>
+          <div className='rounded-md p-1 bg-gray-700 mb-2'>
+            <video playsInline ref={userVideo} autoPlay className='rounded-md w-full' />
+            <span className='font-black text-gray-400 ml-1'>
+              {call.name || 'Someone'}
+            </span>
           </div>
         )
       }
       {stream && (
-        <div className='myVideo'>
-          <video playsInline muted ref={myVideo} autoPlay />
-          <div>
-          {name || 'Me'}
-          </div>
+        <div className='rounded-md p-1 bg-gray-700'>
+          <video playsInline muted ref={myVideo} autoPlay className='rounded-md w-full' />
+          <span className='font-black text-gray-400 ml-1'>
+            {name || 'Me'}
+          </span>
         </div>
       )}
-      
+
     </div>
   )
 }

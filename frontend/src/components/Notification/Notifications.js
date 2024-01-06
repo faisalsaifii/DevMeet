@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { SocketContext } from '../../Context'
-import CallIcon from './call.svg'
 const Notifications = () => {
   const {
     call,
@@ -12,10 +11,10 @@ const Notifications = () => {
     <>
       {
         call.isReceivingCall && !callAccepted && (
-          <div>
-            <h2>{call.name || "Someone"} is calling</h2>
-            <button onClick={answerCall}>
-              <img src={CallIcon} alt='Answer' />
+          <div className='flex ml-2 mt-2 items-center justify-between'>
+            <span className='font-bold'>{call.name || "Someone"} has sent an invite</span>
+            <button onClick={answerCall} className='bg-green-400 rounded-md p-2 ml-2'>
+              <span>Join</span>
             </button>
           </div>
         )

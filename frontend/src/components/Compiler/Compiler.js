@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Compiler.css';
-import RunIcon from './run.svg';
 
 const Compiler = () => {
 	const [input, setInput] = useState(localStorage.getItem('input') || '');
@@ -95,41 +93,39 @@ const Compiler = () => {
 	};
 
 	return (
-		<div className='compiler'>
-			<div className='fields'>
-				<div className='code'>
-					<span className='badge badge-info heading my-2 '>
-						<i className='fas fa-exclamation fa-fw fa-md'></i>{' '}
-						Code
-					</span>
-					<textarea
-						required
-						name='solution'
-						id='source'
-						onChange={handleInput}
-						className='source'
-						value={input}
-					></textarea>
-				</div>
-				<div className='outputContainer'>
-					<span className='badge badge-info heading my-2 '>
-						<i className='fas fa-exclamation fa-fw fa-md'></i>{' '}
-						Output
-					</span>
-					<textarea id='output'></textarea>
-				</div>
-				<div className='mt-2 ml-5'>
-					<span className='badge badge-primary heading my-2 '>
-						<i className='fas fa-user fa-fw fa-md'></i> User Input
-					</span>
-					<br />
-					<textarea id='input' onChange={handleUserInput}></textarea>
-				</div>
+		<>
+			<div className='flex flex-col p-2 h-4/6'>
+				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+					Code
+				</span>
+				<textarea
+					required
+					name='solution'
+					id='source'
+					onChange={handleInput}
+					className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin h-full'
+					value={input}
+				></textarea>
+			</div>
+			<div className='flex flex-col p-2 h-1/6'>
+				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+					Output
+				</span>
+				<textarea id='output' className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'></textarea>
+			</div>
+			<div className='flex flex-col p-2'>
+				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+					Input
+				</span>
+				<br />
+				<textarea id='input' onChange={handleUserInput} className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'></textarea>
+			</div>
+			<div className='flex p-2'>
 				<select
 					value={languageId}
 					onChange={handleLanguage}
 					id='tags'
-					className='form-control form-inline mb-2 language'
+					className='dark:bg-gray-900 rounded-md p-2 border-gray-500 border-1'
 				>
 					<option value='54'>C++</option>
 					<option value='50'>C</option>
@@ -138,14 +134,14 @@ const Compiler = () => {
 				</select>
 				<button
 					type='submit'
-					className='btn btn-danger ml-2 mr-2 '
+					className='bg-green-400 rounded-md h-10 w-10 p-3 ml-2'
 					onClick={handleSubmit}
 				>
-					<i className='fas fa-cog fa-fw'></i>
-					<img src={RunIcon} alt='Run' />
+					<img src='/run.svg' alt='Run' />
 				</button>
 			</div>
-		</div>
+
+		</>
 	);
 };
 
