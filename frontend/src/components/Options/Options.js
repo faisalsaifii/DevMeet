@@ -1,13 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-
 import { SocketContext } from '../../Context'
-
-import './Options.css'
-
-import CallIcon from './call.svg'
-import CopyIcon from './copy.svg'
-import EndCallIcon from './cut.svg'
 
 const Options = ({ children }) => {
   const {
@@ -21,35 +14,37 @@ const Options = ({ children }) => {
   } = useContext(SocketContext)
 
   const [idToCall, setIdToCall] = useState('')
-  
+
   return (
-    <div className='optionsContainer'>
-        <div>
-            <input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='Name'/>
-            <CopyToClipboard text={me}>
-              <button>
-                <img src={CopyIcon} alt='Copy ID'/>
-              </button>
-            </CopyToClipboard>
-        </div>
-        <div>
-            <input type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} placeholder='ID to Call'/>
-          { callAccepted && !callEnded ? (
-            <button
-              onClick={leaveCall}
-            >
-              <img src={EndCallIcon} alt='Hang Up'/>
-            </button>
-            ) : (
-            <button
-              onClick={() => callUser(idToCall)}
-            >
-              <img src={CallIcon} alt='Call'/>
-            </button>
-          )}
-        </div>
+    <div className='flex flex-col'>
+      <div className='flex items-center mt-2'>
+        <input className='w-full dark:bg-gray-800 rounded-tl-md p-2 border-0 focus:outline-none focus:dark:bg-gray-700 font-thin' type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' />
+        <CopyToClipboard text={me}>
+          <button className='bg-green-400 rounded-r-md h-10 w-10 p-2'>
+            <img src='/copy.svg' alt='Copy ID' />
+          </button>
+        </CopyToClipboard>
+      </div>
+      <div className='flex items-center mt-2'>
+        <input className='w-full dark:bg-gray-800 rounded-tl-md p-2 border-0 focus:outline-none focus:dark:bg-gray-700 font-thin' type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} placeholder='ID to Call' />
+        {callAccepted && !callEnded ? (
+          <button
+            onClick={leaveCall}
+            className='bg-red-400 rounded-r-md h-10 w-10 p-2'
+          >
+            <img src='/cut.svg' alt='Hang Up' />
+          </button>
+        ) : (
+          <button
+            onClick={() => callUser(idToCall)}
+            className='bg-green-400 rounded-r-md h-10 w-10 p-2'
+          >
+            <img src='/call.svg' alt='Call' />
+          </button>
+        )}
+      </div>
       {children}
-    </div>
+    </div >
   )
 }
 
