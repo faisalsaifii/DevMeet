@@ -15,7 +15,7 @@ const VideoPlayer = () => {
     <div className='flex flex-col'>
       {
         callAccepted && !callEnded && (
-          <div className='rounded-md p-1 bg-gray-700 mb-2'>
+          <div className='rounded-md p-1 bg-gray-800 mb-2'>
             <video playsInline ref={userVideo} autoPlay className='rounded-md w-full' />
             <span className='font-black text-gray-400 ml-1'>
               {call.name || 'Someone'}
@@ -24,7 +24,7 @@ const VideoPlayer = () => {
         )
       }
       {stream && (
-        <div className='rounded-md p-1 bg-gray-700'>
+        <div className='rounded-md p-1 bg-gray-800'>
           <video playsInline muted ref={myVideo} autoPlay className='rounded-md w-full' />
           <span className='font-black text-gray-400 ml-1'>
             {name || 'Me'}
