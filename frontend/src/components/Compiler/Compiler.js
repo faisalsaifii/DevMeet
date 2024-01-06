@@ -48,10 +48,18 @@ const Compiler = () => {
 		}
 	}
 
+	const handleTabInput = (e) => {
+		if (e.keyCode === 9) {
+			e.preventDefault();
+			setCode(code + '\t')
+			return false;
+		}
+	}
+
 	return (
 		<>
 			<div className='flex flex-col p-2 h-4/6'>
-				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Code
 				</span>
 				<textarea
@@ -60,16 +68,17 @@ const Compiler = () => {
 					onChange={e => setCode(e.target.value)}
 					className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin h-full'
 					value={code}
+					onKeyDown={e => handleTabInput(e)}
 				></textarea>
 			</div>
 			<div className='flex flex-col p-2 h-1/6'>
-				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Output
 				</span>
-				<div id='output' className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'>{output}</div>
+				<div id='output' className='h-full bg-white rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'>{output}</div>
 			</div>
 			<div className='flex flex-col p-2'>
-				<span className='rounded-t-md dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Input
 				</span>
 				<br />
@@ -94,9 +103,9 @@ const Compiler = () => {
 				>
 					<img src='/run.svg' alt='Run' />
 				</button>
-				<a href='https://github.com/faisalsaifii/DevMeet' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-600 rounded-md ml-2'>Github Repo</a>
-				<a href='https://github.com/faisalsaifii/DevMeet/graphs/contributors' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-600 rounded-md ml-2'>Contributors</a>
-				<img className='h-8 m-1' src='/logo.svg' alt='Logo' />
+				<a href='https://github.com/faisalsaifii/DevMeet' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md ml-2'>Github Repo</a>
+				<a href='https://github.com/faisalsaifii/DevMeet/graphs/contributors' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md ml-2'>Contributors</a>
+				<img className='h-8 m-1' src='/Logo.svg' alt='logo' />
 			</div>
 
 		</>
