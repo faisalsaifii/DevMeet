@@ -7,7 +7,7 @@ import Compiler from './components/Compiler/Compiler';
 const App = () => {
   return (
     <div className='flex w-full min-h-screen'>
-      <div className='w-1/3 p-2'>
+      <div className='w-1/3 pt-2 pl-2 pb-2'>
         <VideoPlayer />
         <Options>
           <Notifications />
