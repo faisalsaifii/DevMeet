@@ -20,6 +20,7 @@ const Compiler = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setCurrentWindow('output');
 		setOutput('Loading...');
 		const options = {
 			method: 'POST',
@@ -61,20 +62,39 @@ const Compiler = () => {
 	return (
 		<>
 			<div className='flex flex-col p-2 pb-0 h-4/6'>
-				<span className='rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 font-bold text-md dark:text-gray-400'>
-					Code
+				<span className='flex items-center justify-between rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 text-md dark:text-gray-400'>
+					<span className='font-bold'>Code</span>
+					<div>
+						<select
+							value={languageId}
+							onChange={e => setLanguageId(e.target.value)}
+							id='tags'
+							className='dark:bg-gray-900 rounded-md bg-white font-thin'
+						>
+							<option value='54'>C++</option>
+							<option value='50'>C</option>
+							<option value='62'>Java</option>
+							<option value='71'>Python</option>
+						</select>
+						<button
+							type='submit'
+							className='bg-green-400 rounded-md h-7 w-7 p-2 ml-2'
+							onClick={handleSubmit}
+						>
+							<img src='/run.svg' alt='Run' />
+						</button>
+					</div>
 				</span>
 				<textarea
 					name='solution'
 					id='source'
 					onChange={e => setCode(e.target.value)}
-					className='rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-xs font-thin h-full'
+					className='rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-s font-thin h-full'
 					value={code}
 					onKeyDown={e => handleTabInput(e)}
 				></textarea>
 			</div>
-
-			<div className='flex flex-col p-2 h-1/6 pb-0'>
+			<div className='flex flex-col p-2 h-2/6 pb-0'>
 				<span className='flex rounded-t-md bg-white dark:bg-slate-900 p-2 text-md dark:text-gray-400'>
 					<div className='rounded-md bg-gray-100 dark:bg-black p-1 font-thin'>
 						<button className={`p-1 px-3 rounded-md ${currentWindow === 'output' ? 'dark:bg-gray-900 bg-white' : 'dark:bg-black bg-gray-100'}`} onClick={_ => setCurrentWindow('output')}>Output</button>
@@ -83,35 +103,14 @@ const Compiler = () => {
 				</span>
 				{
 					currentWindow === 'output' ? (
-						<div id='output' className='h-full p-2 pl-3 bg-white rounded-b-md dark:bg-slate-900 focus:outline-none font-mono text-xs font-thin'>
+						<div id='output' className='h-full mb-2 p-2 pl-3 bg-white rounded-b-md dark:bg-slate-900 focus:outline-none font-mono text-s font-thin'>
 							{output}
 						</div>
 					) : (
-						<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-xs font-thin' />
+						<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none mb-2 p-2 pl-3 font-mono text-s font-thin' />
 					)
 				}
 			</div >
-			<div className='flex p-2'>
-				<select
-					value={languageId}
-					onChange={e => setLanguageId(e.target.value)}
-					id='tags'
-					className='dark:bg-gray-900 rounded-md p-2 border-gray-500 border-1'
-				>
-					<option value='54'>C++</option>
-					<option value='50'>C</option>
-					<option value='62'>Java</option>
-					<option value='71'>Python</option>
-				</select>
-				<button
-					type='submit'
-					className='bg-green-400 rounded-md h-10 w-10 p-3 ml-2'
-					onClick={handleSubmit}
-				>
-					<img src='/run.svg' alt='Run' />
-				</button>
-			</div>
-
 		</>
 	);
 };
