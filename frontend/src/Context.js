@@ -24,7 +24,8 @@ const ContextProvider = ({ children }) => {
 			.then((currentStream) => {
 				setStream(currentStream);
 				myVideo.current.srcObject = currentStream;
-			});
+			})
+			.catch((err) => console.log(err));
 
 		socket.on('me', (id) => setMe(id));
 

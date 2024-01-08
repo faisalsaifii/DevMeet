@@ -4,6 +4,16 @@ Became tired of companies still using zoom or google meet to take coding intervi
 
 [Live Application](https://developermeet.vercel.app)
 
+## Usage
+
+- Enter your name
+- Copy your Meet ID
+- Share your Meet ID and ask them to paste your Meet ID and call you
+- You will get an invitation to join the call
+- Join the call
+- Start Coding
+- Voila 🎉
+
 ## Run Locally
 
 Frontend
