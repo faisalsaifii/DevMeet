@@ -58,7 +58,7 @@ const Compiler = () => {
 
 	return (
 		<>
-			<div className='flex flex-col p-2 h-4/6'>
+			<div className='flex flex-col p-2 pb-0 h-4/6'>
 				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Code
 				</span>
@@ -71,17 +71,16 @@ const Compiler = () => {
 					onKeyDown={e => handleTabInput(e)}
 				></textarea>
 			</div>
-			<div className='flex flex-col p-2 h-1/6'>
+			<div className='flex flex-col p-2 h-1/6 pb-0'>
 				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Output
 				</span>
 				<div id='output' className='h-full bg-white rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'>{output}</div>
 			</div>
-			<div className='flex flex-col p-2'>
+			<div className='flex flex-col p-2 pb-0'>
 				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
 					Input
 				</span>
-				<br />
 				<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'></textarea>
 			</div>
 			<div className='flex p-2'>

@@ -14,7 +14,7 @@ const Notifications = () => {
           <div className='flex ml-2 mt-2 items-center justify-between'>
             <span className='font-bold'>{call.name || "Someone"} has sent an invite</span>
             <button onClick={answerCall} className='bg-green-400 rounded-md p-2 ml-2'>
-              <span>Join</span>
+              <span className='text-white'>Join</span>
             </button>
           </div>
         )
