@@ -26,3 +26,8 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.monaco-editor,
+.overflow-guard {
+    border-radius: .25rem;
+}

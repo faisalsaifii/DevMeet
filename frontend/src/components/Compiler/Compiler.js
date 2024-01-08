@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CodeInput from '../CodeInput';
+import CodeEditor from '../CodeEditor';
 
 const Compiler = () => {
 	// Code
@@ -88,13 +88,13 @@ const Compiler = () => {
 				</span>
 				{
 					languageId === '50' ? (
-						<CodeInput code={cCode} setCode={setCCode} />
+						<CodeEditor code={cCode} setCode={setCCode} language={'c'} />
 					) : languageId === '54' ? (
-						<CodeInput code={cppCode} setCode={setCppCode} />
+						<CodeEditor code={cppCode} setCode={setCppCode} language={'cpp'} />
 					) : languageId === '62' ? (
-						<CodeInput code={jsCode} setCode={setJsCode} />
+						<CodeEditor code={jsCode} setCode={setJsCode} language={'java'} />
 					) : languageId === '71' ? (
-						<CodeInput code={pyCode} setCode={setPyCode} />
+						<CodeEditor code={pyCode} setCode={setPyCode} language={'python'} />
 					) : <></>
 				}
 			</div >
