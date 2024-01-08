@@ -10,23 +10,23 @@ import Info from './components/Info';
 const App = () => {
   const [showInfo, setShowInfo] = useState(false)
   return (
-    <div className='flex flex-col h-full'>
+    <>
       {
         showInfo && <Info setShowInfo={setShowInfo} />
       }
       <NavBar setShowInfo={setShowInfo} />
-      <div className='flex w-full h-full'>
-        <div className='w-1/3 pt-2 pl-2 pb-2'>
+      <div className='flex h-full pt-10'>
+        <div className='overflow-scroll w-1/4 pt-2 pl-2 pb-2'>
           <VideoPlayer />
           <Options>
             <Notifications />
           </Options>
         </div>
-        <div className='w-2/3'>
+        <div className='w-3/4'>
           <Compiler />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
