@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className='flex flex-col h-full'>
       {
-        showInfo && <Info showInfo={showInfo} setShowInfo={setShowInfo} />
+        showInfo && <Info setShowInfo={setShowInfo} />
       }
       <NavBar setShowInfo={setShowInfo} />
       <div className='flex w-full h-full'>

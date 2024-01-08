@@ -1,11 +1,11 @@
 import { UilMultiply } from '@iconscout/react-unicons'
 
-const Info = ({ showInfo, setShowInfo }) => {
+const Info = ({ setShowInfo }) => {
     return (
-        <div className='min-h-screen w-full bg-black/50 backdrop-blur-2xl absolute top-0 overflow-hidden p-10'>
+        <div className='min-h-screen w-full bg-white/50 dark:bg-black/50 backdrop-blur-2xl absolute top-0 overflow-hidden p-10'>
             <h1 className="font-black text-7xl">DevMeet</h1>
             <span className='font-thin text-xl m-1'>Coding Interview Platform</span>
-            <button title='Close' className="absolute top-0 right-0 p-2 m-10" onClick={_ => setShowInfo(false)}><UilMultiply color='#fff' className='close-icon' /></button>
+            <button title='Close' className="absolute top-0 right-0 p-2 m-10" onClick={_ => setShowInfo(false)}><UilMultiply color='purple' className='close-icon' /></button>
             <h2 className="font-bold text-3xl mt-10">How to use?</h2>
             <ol className='list-decimal font-thin text-lg m-2 ml-10'>
                 <li>Enter your name</li>
