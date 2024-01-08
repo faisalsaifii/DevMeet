@@ -99,7 +99,7 @@ const ContextProvider = ({ children }) => {
 				me,
 				callUser,
 				leaveCall,
-				answerCall,
+				answerCall
 			}}
 		>
 			{children}
