@@ -26,3 +26,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.overflow-guard {
+    border-radius: 10px;
+}
