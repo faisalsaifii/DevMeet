@@ -11,10 +11,10 @@ const Notifications = () => {
     <>
       {
         call.isReceivingCall && !callAccepted && (
-          <div className='flex ml-2 mt-2 items-center justify-between'>
+          <div className='flex p-2 pl-4 mt-2 rounded-md items-center justify-between bg-white dark:bg-gray-800'>
             <span className='font-bold'>{call.name || "Someone"} has sent an invite</span>
-            <button onClick={answerCall} className='bg-green-400 rounded-md p-2 ml-2'>
-              <span className='text-white'>Join</span>
+            <button onClick={answerCall} className='bg-green-400 rounded-md h-10 w-10 p-2 ml-2'>
+              <span className='text-white'><img src='/img/plus.svg' alt='logo' /></span>
             </button>
           </div>
         )
