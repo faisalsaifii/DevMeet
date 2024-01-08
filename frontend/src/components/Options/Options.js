@@ -31,7 +31,7 @@ const Options = ({ children }) => {
         <input className='w-full dark:bg-gray-800 rounded-l-md p-4 border-0 focus:outline-none focus:dark:bg-gray-700 font-thin' type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} placeholder='ID to Call' />
         <div className='p-2 dark:bg-gray-800 bg-white rounded-r-md'>
           {
-            idToCall ? (callAccepted && !callEnded ? (
+            callAccepted && !callEnded ? (
               <button
                 onClick={leaveCall}
                 className='bg-red-400 rounded-md h-10 w-10 p-2'
@@ -40,14 +40,18 @@ const Options = ({ children }) => {
                 <img src='/cut.svg' alt='Hang Up' />
               </button>
             ) : (
-              <button
-                onClick={() => callUser(idToCall)}
-                className='bg-green-400 rounded-md h-10 w-10 p-2'
-                title='Call'
-              >
-                <img src='/call.svg' alt='Call' />
-              </button>
-            )) : <div className='h-10 w-10 p-2'></div>
+              <>
+                {idToCall ? (
+                  <button
+                    onClick={() => callUser(idToCall)}
+                    className='bg-green-400 rounded-md h-10 w-10 p-2'
+                    title='Call'
+                  >
+                    <img src='/call.svg' alt='Call' />
+                  </button>
+                ) : <div className='h-10 w-10'></div>}
+              </>
+            )
           }
         </div>
 
