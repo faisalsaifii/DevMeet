@@ -102,9 +102,6 @@ const Compiler = () => {
 				>
 					<img src='/run.svg' alt='Run' />
 				</button>
-				<a href='https://github.com/faisalsaifii/DevMeet' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md ml-2'>Github Repo</a>
-				<a href='https://github.com/faisalsaifii/DevMeet/graphs/contributors' target='_blank' rel='noreferrer' className='font-black p-2 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md ml-2'>Contributors</a>
-				<img className='h-8 m-1' src='/Logo.svg' alt='logo' />
 			</div>
 
 		</>
