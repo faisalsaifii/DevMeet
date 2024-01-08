@@ -7,8 +7,8 @@ const NavBar = ({ setShowInfo }) => {
 				<button className="p-1 ml-1"><img className='h-4' src='/img/code.svg' alt='Code' /></button>
 			</div>
 			<div className="flex">
-				<button className="m-1 h-6 bg-white rounded-full" title="Info" onClick={_ => setShowInfo(true)}><img className='h-full' src='/img/info.svg' alt='Info' /></button>
-				<a href='https://github.com/faisalsaifii/DevMeet' target='_blank' rel='noreferrer' className='m-1 h-6 p-0.5 bg-white rounded-full'><img className='h-full rounded-full' src='/img/github.svg' alt='logo' /></a>
+				<button className="m-1 h-6 bg-purple-400 rounded-full" title="Info" onClick={_ => setShowInfo(true)}><img className='h-full' src='/img/info.svg' alt='Info' /></button>
+				<a href='https://github.com/faisalsaifii/DevMeet' target='_blank' rel='noreferrer' className='m-1 h-6 p-0.5 rounded-full'><img className='h-full rounded-full' src='/img/github.svg' alt='logo' /></a>
 			</div>
 
 		</nav>
