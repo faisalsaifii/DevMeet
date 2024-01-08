@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CodeInput from '../CodeInput';
 
 const Compiler = () => {
-	const [code, setCode] = useState(localStorage.getItem('code') || '')
+	// Code
+	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '')
+	const [jsCode, setJsCode] = useState(localStorage.getItem('js-code') || '')
+	const [pyCode, setPyCode] = useState(localStorage.getItem('py-code') || '')
+	const [cppCode, setCppCode] = useState(localStorage.getItem('cpp-code') || '')
+
 	const [input, setInput] = useState(localStorage.getItem('input') || '')
 	const [output, setOutput] = useState(localStorage.getItem('output') || '')
 	const [languageId, setLanguageId] = useState(
@@ -11,12 +17,15 @@ const Compiler = () => {
 	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-window') || 'output')
 
 	useEffect(() => {
-		localStorage.setItem('code', code);
+		localStorage.setItem('c-code', cCode);
+		localStorage.setItem('cpp-code', cppCode);
+		localStorage.setItem('js-code', jsCode);
+		localStorage.setItem('py-code', pyCode);
 		localStorage.setItem('output', output);
 		localStorage.setItem('language_id', languageId);
 		localStorage.setItem('input', input);
 		localStorage.setItem('current-window', currentWindow);
-	}, [code, languageId, input, output, currentWindow])
+	}, [languageId, input, output, currentWindow, cCode, cppCode, jsCode, pyCode])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -38,7 +47,7 @@ const Compiler = () => {
 			},
 			data: {
 				language_id: languageId,
-				source_code: btoa(code),
+				source_code: btoa(languageId === '50' ? cCode : languageId === '54' ? cppCode : languageId === '62' ? jsCode : pyCode),
 				stdin: btoa(input)
 			}
 		};
@@ -48,14 +57,6 @@ const Compiler = () => {
 		} catch (error) {
 			console.error(error);
 			setOutput('Something went wrong');
-		}
-	}
-
-	const handleTabInput = (e) => {
-		if (e.keyCode === 9) {
-			e.preventDefault();
-			setCode(code + '\t')
-			return false;
 		}
 	}
 
@@ -85,15 +86,18 @@ const Compiler = () => {
 						</button>
 					</div>
 				</span>
-				<textarea
-					name='solution'
-					id='source'
-					onChange={e => setCode(e.target.value)}
-					className='rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-s font-thin h-full'
-					value={code}
-					onKeyDown={e => handleTabInput(e)}
-				></textarea>
-			</div>
+				{
+					languageId === '50' ? (
+						<CodeInput code={cCode} setCode={setCCode} />
+					) : languageId === '54' ? (
+						<CodeInput code={cppCode} setCode={setCppCode} />
+					) : languageId === '62' ? (
+						<CodeInput code={jsCode} setCode={setJsCode} />
+					) : languageId === '71' ? (
+						<CodeInput code={pyCode} setCode={setPyCode} />
+					) : <></>
+				}
+			</div >
 			<div className='flex flex-col p-2 h-2/6 pb-0'>
 				<span className='flex rounded-t-md bg-white dark:bg-slate-900 p-2 text-md dark:text-gray-400'>
 					<div className='rounded-md bg-gray-100 dark:bg-black p-1 font-thin'>
