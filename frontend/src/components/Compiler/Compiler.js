@@ -8,13 +8,15 @@ const Compiler = () => {
 	const [languageId, setLanguageId] = useState(
 		localStorage.getItem('language_id') || 71
 	);
+	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-window') || 'output')
 
 	useEffect(() => {
 		localStorage.setItem('code', code);
 		localStorage.setItem('output', output);
 		localStorage.setItem('language_id', languageId);
 		localStorage.setItem('input', input);
-	}, [code, languageId, input, output])
+		localStorage.setItem('current-window', currentWindow);
+	}, [code, languageId, input, output, currentWindow])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -59,30 +61,36 @@ const Compiler = () => {
 	return (
 		<>
 			<div className='flex flex-col p-2 pb-0 h-4/6'>
-				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
+				<span className='rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 font-bold text-md dark:text-gray-400'>
 					Code
 				</span>
 				<textarea
 					name='solution'
 					id='source'
 					onChange={e => setCode(e.target.value)}
-					className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin h-full'
+					className='rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-xs font-thin h-full'
 					value={code}
 					onKeyDown={e => handleTabInput(e)}
 				></textarea>
 			</div>
+
 			<div className='flex flex-col p-2 h-1/6 pb-0'>
-				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
-					Output
+				<span className='flex rounded-t-md bg-white dark:bg-slate-900 p-2 text-md dark:text-gray-400'>
+					<div className='rounded-md bg-gray-100 dark:bg-black p-1 font-thin'>
+						<button className={`p-1 px-3 rounded-md ${currentWindow === 'output' ? 'dark:bg-gray-900 bg-white' : 'dark:bg-black bg-gray-100'}`} onClick={_ => setCurrentWindow('output')}>Output</button>
+						<button className={`p-1 px-3 rounded-md ${currentWindow === 'input' ? 'dark:bg-gray-900 bg-white' : 'dark:bg-black bg-gray-100'}`} onClick={_ => setCurrentWindow('input')}>Input</button>
+					</div>
 				</span>
-				<div id='output' className='h-full bg-white rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'>{output}</div>
-			</div>
-			<div className='flex flex-col p-2 pb-0'>
-				<span className='rounded-t-md bg-white dark:bg-slate-900 pl-2 font-bold text-md dark:text-gray-400'>
-					Input
-				</span>
-				<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='rounded-b-md dark:bg-slate-900 focus:outline-none pl-2 font-mono text-xs font-thin'></textarea>
-			</div>
+				{
+					currentWindow === 'output' ? (
+						<div id='output' className='h-full p-2 pl-3 bg-white rounded-b-md dark:bg-slate-900 focus:outline-none font-mono text-xs font-thin'>
+							{output}
+						</div>
+					) : (
+						<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none p-2 pl-3 font-mono text-xs font-thin' />
+					)
+				}
+			</div >
 			<div className='flex p-2'>
 				<select
 					value={languageId}
