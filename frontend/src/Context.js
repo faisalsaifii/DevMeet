@@ -14,13 +14,15 @@ const ContextProvider = ({ children }) => {
 	const [call, setCall] = useState({});
 	const [me, setMe] = useState('');
 	const [editorTheme, setEditorTheme] = useState(localStorage.getItem('editor-theme') || 'vs-dark');
+	const [editorFontSize, setEditorFontSize] = useState(localStorage.getItem('editor-font-size') || 18);
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
 
 	useEffect(() => {
 		localStorage.setItem('editor-theme', editorTheme);
-	}, [editorTheme])
+		localStorage.setItem('editor-font-size', editorFontSize);
+	}, [editorTheme, editorFontSize])
 
 	useEffect(() => {
 		navigator.mediaDevices
@@ -105,7 +107,9 @@ const ContextProvider = ({ children }) => {
 				leaveCall,
 				answerCall,
 				editorTheme,
-				setEditorTheme
+				setEditorTheme,
+				editorFontSize,
+				setEditorFontSize
 			}}
 		>
 			{children}

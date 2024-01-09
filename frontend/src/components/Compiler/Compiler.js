@@ -4,7 +4,7 @@ import CodeEditor from '../CodeEditor';
 import { SocketContext } from '../../Context';
 
 const Compiler = () => {
-	const { editorTheme, setEditorTheme } = useContext(SocketContext);
+	const { editorTheme, setEditorTheme, editorFontSize, setEditorFontSize } = useContext(SocketContext);
 	// Code
 	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '')
 	const [jsCode, setJsCode] = useState(localStorage.getItem('js-code') || '')
@@ -68,6 +68,7 @@ const Compiler = () => {
 				<span className='flex items-center justify-between rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 text-md dark:text-gray-400'>
 					<span className='font-bold'>Code</span>
 					<div>
+						<input value={editorFontSize} onChange={e => setEditorFontSize(e.target.value)} title='Font Size' className='dark:bg-gray-800 rounded-md bg-white font-thin mr-2 text-xs p-2 focus:outline-none w-20 appearance-none' type='number' max={52} min={1} />
 						<select
 							value={editorTheme}
 							onChange={e => setEditorTheme(e.target.value)}

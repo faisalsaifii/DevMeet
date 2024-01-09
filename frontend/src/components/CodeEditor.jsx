@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { SocketContext } from "../Context";
 
 const CodeEditor = ({ code, setCode, language }) => {
-    const { editorTheme } = useContext(SocketContext);
+    const { editorTheme, editorFontSize } = useContext(SocketContext);
 
     return (
         <div className='flex h-full p-1 bg-white dark:bg-gray-900 rounded-b-md'>
@@ -13,7 +13,8 @@ const CodeEditor = ({ code, setCode, language }) => {
                 value={code}
                 options={{
                     selectOnLineNumbers: true,
-                    colorDecorators: true
+                    colorDecorators: true,
+                    fontSize: editorFontSize,
                 }}
                 onChange={newValue => setCode(newValue)}
             />
