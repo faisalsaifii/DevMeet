@@ -9,24 +9,25 @@ const VideoPlayer = () => {
     userVideo,
     callEnded,
     stream,
-    call
+    call,
+    currentWindow
   } = useContext(SocketContext);
   return (
-    <div className='flex flex-col'>
+    <div className={`flex h-full ${currentWindow !== 'meet' ? 'flex-col' : 'pb-20'}`}>
       {
         callAccepted && !callEnded && (
-          <div className='rounded-md p-1 bg-gray-200 dark:bg-gray-900 mb-2'>
-            <video playsInline ref={userVideo} autoPlay className='rounded-md w-full' />
-            <span className='font-black text-gray-400 ml-1'>
+          <div className={`relative flex items-center justify-center rounded-md bg-gray-100 dark:bg-black ${currentWindow === 'meet' ? 'mr-2' : 'mb-2'}`}>
+            <video playsInline ref={userVideo} autoPlay className='rounded-md max-h-full max-w-full w-auto h-auto overflow-hidden' />
+            <span className='font-black text-gray-400 bottom-1 absolute'>
               {call.name || 'Someone'}
             </span>
           </div>
         )
       }
       {stream && (
-        <div className='rounded-md p-1 bg-gray-200 dark:bg-gray-900'>
-          <video playsInline muted ref={myVideo} autoPlay className='rounded-md w-full' />
-          <span className='font-black text-gray-400 ml-1'>
+        <div className={`relative flex items-center justify-center rounded-md bg-gray-100 dark:bg-black ${currentWindow === 'meet' ? '' : ''}`}>
+          <video playsInline muted ref={myVideo} autoPlay className='rounded-md max-h-full max-w-full w-auto h-auto overflow-hidden' />
+          <span className='font-black text-gray-400 bottom-1 absolute'>
             {name || 'Me'}
           </span>
         </div>

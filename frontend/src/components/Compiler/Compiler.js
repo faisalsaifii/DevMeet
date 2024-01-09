@@ -16,7 +16,7 @@ const Compiler = () => {
 	const [languageId, setLanguageId] = useState(
 		localStorage.getItem('language_id') || 71
 	);
-	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-window') || 'output')
+	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-io-window') || 'output')
 
 	useEffect(() => {
 		localStorage.setItem('c-code', cCode);
@@ -26,7 +26,7 @@ const Compiler = () => {
 		localStorage.setItem('output', output);
 		localStorage.setItem('language_id', languageId);
 		localStorage.setItem('input', input);
-		localStorage.setItem('current-window', currentWindow);
+		localStorage.setItem('current-io-window', currentWindow);
 	}, [languageId, input, output, currentWindow, cCode, cppCode, jsCode, pyCode])
 
 	const handleSubmit = async (e) => {
@@ -64,7 +64,7 @@ const Compiler = () => {
 
 	return (
 		<>
-			<div className='flex flex-col p-2 pb-0 h-4/6'>
+			<div className='flex flex-col p-2 pt-0 pb-0 h-4/6'>
 				<span className='flex items-center justify-between rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 text-md dark:text-gray-400'>
 					<span className='font-bold'>Code</span>
 					<div>

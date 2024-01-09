@@ -1,0 +1,19 @@
+<svg width="1500" height="1500" viewBox="0 0 1500 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_10)">
+<rect width="1500" height="1500" fill="black"/>
+<circle cx="750" cy="750" r="750" fill="black"/>
+<rect x="1041.5" y="462.5" width="105" height="575" fill="#A07EFF" stroke="black" stroke-width="25"/>
+<rect x="867.5" y="387.5" width="135" height="725" fill="#A07EFF" stroke="black" stroke-width="25"/>
+<rect x="652.5" y="312.5" width="175" height="875" fill="#A07EFF" stroke="black" stroke-width="25"/>
+<mask id="path-5-inside-1_1_10" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M840 750C840 1026.14 616.142 1250 340 1250V1000C478.071 1000 590 888.071 590 750C590 611.929 478.071 500 340 500V250C616.142 250 840 473.858 840 750Z"/>
+</mask>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M840 750C840 1026.14 616.142 1250 340 1250V1000C478.071 1000 590 888.071 590 750C590 611.929 478.071 500 340 500V250C616.142 250 840 473.858 840 750Z" fill="white"/>
+<path d="M340 1250H290V1300H340V1250ZM340 1000V950H290V1000H340ZM340 500H290V550H340V500ZM340 250V200H290V250H340ZM340 1300C643.757 1300 890 1053.76 890 750H790C790 998.528 588.528 1200 340 1200V1300ZM290 1000V1250H390V1000H290ZM340 1050C505.685 1050 640 915.685 640 750H540C540 860.457 450.457 950 340 950V1050ZM640 750C640 584.315 505.685 450 340 450V550C450.457 550 540 639.543 540 750H640ZM290 250V500H390V250H290ZM890 750C890 446.243 643.757 200 340 200V300C588.528 300 790 501.472 790 750H890Z" fill="black" mask="url(#path-5-inside-1_1_10)"/>
+</g>
+<defs>
+<clipPath id="clip0_1_10">
+<rect width="1500" height="1500" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -14,9 +14,9 @@ const Notifications = () => {
     <>
       {
         call.isReceivingCall && !callAccepted && !callEnded && (
-          <div className='flex flex-col absolute bottom-0 right-0 p-4 m-10 rounded-md justify-between bg-white dark:bg-gray-800' style={{ zIndex: 100 }}>
+          <div className='flex flex-col absolute bottom-6 right-6 p-4 rounded-2xl justify-between backdrop-blur-2xl bg-white/50 dark:bg-black/50' style={{ zIndex: 100 }}>
             <span className='pr-20 text-3xl font-thin'>{call.name || "Somebody"} has sent an invite</span>
-            <div className='flex justify-end items-center mt-10'>
+            <div className='flex justify-end items-center mt-10 text-white'>
               <button onClick={answerCall} className='p-2 font-bold bg-green-400 rounded-md'>
                 Accept
               </button>

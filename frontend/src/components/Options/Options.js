@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { SocketContext } from '../../Context'
 
-const Options = ({ children }) => {
+const Options = () => {
   const {
     me,
     name,
@@ -10,14 +10,15 @@ const Options = ({ children }) => {
     callAccepted,
     leaveCall,
     callUser,
-    callEnded
+    callEnded,
+    currentWindow
   } = useContext(SocketContext)
 
   const [idToCall, setIdToCall] = useState('')
 
   return (
-    <div className='flex flex-col'>
-      <div className='flex items-center mt-2'>
+    <div className={`flex w-full ${currentWindow === 'meet' ? 'p-2' : 'flex-col'} absolute left-0 bottom-0 z-20`}>
+      <div className={`flex items-center ${currentWindow === 'meet' ? 'w-1/2 mr-2' : 'mt-2'}`}>
         <input className='w-full dark:bg-gray-900 focus:outline-none rounded-l-md p-4 border-0 font-thin' type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='Name' />
         <div className='p-2 dark:bg-gray-900 bg-white rounded-r-md'>
           <CopyToClipboard text={me}>
@@ -27,7 +28,7 @@ const Options = ({ children }) => {
           </CopyToClipboard>
         </div>
       </div>
-      <div className='flex items-center mt-2'>
+      <div className={`flex items-center ${currentWindow === 'meet' ? 'w-1/2' : 'mt-2'}`}>
         <input className='w-full dark:bg-gray-900 focus:outline-none rounded-l-md p-4 border-0 font-thin' type='text' value={idToCall} onChange={(e) => setIdToCall(e.target.value)} placeholder='ID to Call' />
         <div className='p-2 dark:bg-gray-900 bg-white rounded-r-md'>
           {
@@ -56,7 +57,6 @@ const Options = ({ children }) => {
         </div>
 
       </div>
-      {children}
     </div >
   )
 }
