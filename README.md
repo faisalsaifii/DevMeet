@@ -4,6 +4,10 @@ Became tired of companies still using zoom or google meet to take coding intervi
 
 [Live Application](https://developermeet.vercel.app)
 
+## Preview
+
+![Preview](https://developermeet.vercel.app/img/screenshot.png)
+
 ## Usage
 
 - Enter your name
