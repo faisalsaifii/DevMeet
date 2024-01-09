@@ -107,11 +107,9 @@ const Compiler = () => {
 				</span>
 				{
 					currentWindow === 'output' ? (
-						<div id='output' className='h-full mb-2 p-2 pl-3 bg-white rounded-b-md dark:bg-slate-900 focus:outline-none font-mono text-s font-thin'>
-							{output}
-						</div>
+						<CodeEditor code={output} setCode={setOutput} language={'none'} />
 					) : (
-						<textarea id='input' value={input} onChange={e => setInput(e.target.value)} className='h-full rounded-b-md dark:bg-slate-900 focus:outline-none mb-2 p-2 pl-3 font-mono text-s font-thin' />
+						<CodeEditor code={input} setCode={setInput} language={'none'} />
 					)
 				}
 			</div >
