@@ -3,11 +3,13 @@ import Notifications from './components/Notification/Notifications';
 import Options from './components/Options/Options';
 import Compiler from './components/Compiler/Compiler';
 import NavBar from './components/NavBar/NavBar';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Info from './components/Info';
+import { SocketContext } from './Context';
 
 
 const App = () => {
+  const { currentWindow } = useContext(SocketContext);
   const [showInfo, setShowInfo] = useState(false)
   return (
     <>
@@ -15,16 +17,15 @@ const App = () => {
         showInfo && <Info setShowInfo={setShowInfo} />
       }
       <NavBar setShowInfo={setShowInfo} />
-      <div className='flex h-full pt-10'>
-        <div className='overflow-scroll w-1/4 pt-2 pl-2 pb-2'>
+      <div className={`flex h-full pt-10`}>
+        <div className={`overflow-scroll ${currentWindow === 'meet' ? 'w-full pt-0 p-2' : currentWindow === 'both' ? 'w-3/4 pl-2' : 'hidden'}`}>
           <VideoPlayer />
-          <Options>
-            <Notifications />
-          </Options>
+          <Options />
         </div>
-        <div className='w-3/4'>
+        <div className={`${currentWindow === 'code' ? 'w-full' : currentWindow === 'both' ? 'w-3/4' : 'hidden'}`}>
           <Compiler />
         </div>
+        <Notifications />
       </div>
     </>
   );

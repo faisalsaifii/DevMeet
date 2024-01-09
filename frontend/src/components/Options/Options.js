@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { SocketContext } from '../../Context'
 
-const Options = ({ children }) => {
+const Options = () => {
   const {
     me,
     name,
@@ -56,7 +56,6 @@ const Options = ({ children }) => {
         </div>
 
       </div>
-      {children}
     </div >
   )
 }

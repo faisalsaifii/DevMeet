@@ -15,6 +15,8 @@ const ContextProvider = ({ children }) => {
 	const [me, setMe] = useState('');
 	const [editorTheme, setEditorTheme] = useState(localStorage.getItem('editor-theme') || 'vs-dark');
 	const [editorFontSize, setEditorFontSize] = useState(localStorage.getItem('editor-font-size') || 18);
+	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-window') || 'both');
+
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
@@ -22,7 +24,8 @@ const ContextProvider = ({ children }) => {
 	useEffect(() => {
 		localStorage.setItem('editor-theme', editorTheme);
 		localStorage.setItem('editor-font-size', editorFontSize);
-	}, [editorTheme, editorFontSize])
+		localStorage.setItem('current-window', currentWindow);
+	}, [editorTheme, editorFontSize, currentWindow])
 
 	useEffect(() => {
 		navigator.mediaDevices
@@ -109,7 +112,8 @@ const ContextProvider = ({ children }) => {
 				editorTheme,
 				setEditorTheme,
 				editorFontSize,
-				setEditorFontSize
+				setEditorFontSize,
+				currentWindow, setCurrentWindow
 			}}
 		>
 			{children}
