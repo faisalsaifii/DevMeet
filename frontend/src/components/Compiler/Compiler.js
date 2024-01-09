@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import CodeEditor from '../CodeEditor';
+import { SocketContext } from '../../Context';
 
 const Compiler = () => {
+	const { editorTheme, setEditorTheme } = useContext(SocketContext);
 	// Code
 	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '')
 	const [jsCode, setJsCode] = useState(localStorage.getItem('js-code') || '')
@@ -67,10 +69,19 @@ const Compiler = () => {
 					<span className='font-bold'>Code</span>
 					<div>
 						<select
+							value={editorTheme}
+							onChange={e => setEditorTheme(e.target.value)}
+							title='Theme'
+							className='dark:bg-gray-800 rounded-md bg-white font-thin mr-2 text-xs p-2 appearance-none'
+						>
+							<option value='light'>Light</option>
+							<option value='vs-dark'>Dark</option>
+						</select>
+						<select
 							value={languageId}
 							onChange={e => setLanguageId(e.target.value)}
-							id='tags'
-							className='dark:bg-gray-900 rounded-md bg-white font-thin'
+							title='Language'
+							className='dark:bg-gray-800 rounded-md bg-white font-thin text-xs p-2 appearance-none'
 						>
 							<option value='54'>C++</option>
 							<option value='50'>C</option>
@@ -81,6 +92,7 @@ const Compiler = () => {
 							type='submit'
 							className='bg-green-400 rounded-md h-7 w-7 p-2 ml-2'
 							onClick={handleSubmit}
+							title='Run'
 						>
 							<img src='/run.svg' alt='Run' />
 						</button>

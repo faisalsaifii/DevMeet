@@ -13,10 +13,14 @@ const ContextProvider = ({ children }) => {
 	const [name, setName] = useState('');
 	const [call, setCall] = useState({});
 	const [me, setMe] = useState('');
-
+	const [editorTheme, setEditorTheme] = useState(localStorage.getItem('editor-theme') || 'vs-dark');
 	const myVideo = useRef();
 	const userVideo = useRef();
 	const connectionRef = useRef();
+
+	useEffect(() => {
+		localStorage.setItem('editor-theme', editorTheme);
+	}, [editorTheme])
 
 	useEffect(() => {
 		navigator.mediaDevices
@@ -99,7 +103,9 @@ const ContextProvider = ({ children }) => {
 				me,
 				callUser,
 				leaveCall,
-				answerCall
+				answerCall,
+				editorTheme,
+				setEditorTheme
 			}}
 		>
 			{children}
