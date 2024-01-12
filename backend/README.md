@@ -1,9 +1,9 @@
-# Frontend
+# Backend
 
 ## Run Locally
 
 ```bash
-cd frontend
+cd backend
 npm i
-npm start
+npm run dev
 ```

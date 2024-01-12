@@ -16,6 +16,9 @@ const Info = ({ setShowInfo }) => {
                 <li>Start Coding</li>
                 <li>Voila 🎉</li>
             </ol>
+            <a href='https://rzp.io/l/iClqL0H7' target='_blank' rel='noreferrer' className='flex p-2 items-center justify-center mx-2 text-xs font-thin rounded-md bg-gray-200 dark:bg-gray-800'>
+                Donate
+            </a>
         </div>
     )
 }
