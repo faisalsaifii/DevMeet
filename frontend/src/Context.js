@@ -13,7 +13,14 @@ const ContextProvider = ({ children }) => {
 	const [name, setName] = useState('');
 	const [call, setCall] = useState({});
 	const [me, setMe] = useState('');
-	const [message, setMessage] = useState('');
+	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '');
+	const [javaCode, setJavaCode] = useState(
+		localStorage.getItem('java-code') || ''
+	);
+	const [pyCode, setPyCode] = useState(localStorage.getItem('py-code') || '');
+	const [cppCode, setCppCode] = useState(
+		localStorage.getItem('cpp-code') || ''
+	);
 	const [editorTheme, setEditorTheme] = useState(
 		localStorage.getItem('editor-theme') || 'vs-dark'
 	);
@@ -34,6 +41,8 @@ const ContextProvider = ({ children }) => {
 		localStorage.setItem('current-window', currentWindow);
 	}, [editorTheme, editorFontSize, currentWindow]);
 
+	useEffect(() => console.log(pyCode), [pyCode]);
+
 	useEffect(() => {
 		navigator.mediaDevices
 			.getUserMedia({ video: true, audio: true })
@@ -48,21 +57,50 @@ const ContextProvider = ({ children }) => {
 		socket.on('callUser', ({ from, name: callerName, signal }) => {
 			setCall({ isReceivingCall: true, from, name: callerName, signal });
 		});
-	}, []);
 
-	useEffect(() => {
-		socket.on('receiveMessage', (message) => {
-			setMessage(message);
-			console.log(message);
+		socket.on('cCodeChange', ({ code }) => {
+			setCCode(code);
+			localStorage.setItem('c-code', code);
+		});
+
+		socket.on('cppCodeChange', ({ code }) => {
+			setCppCode(code);
+			localStorage.setItem('cpp-code', code);
+		});
+
+		socket.on('pyCodeChange', ({ code }) => {
+			setPyCode(code);
+			localStorage.setItem('py-code', code);
+		});
+
+		socket.on('javaCodeChange', ({ code }) => {
+			setJavaCode(code);
+			localStorage.setItem('java-code', code);
 		});
 	}, []);
 
-	const input = (event) => {
-		event.preventDefault();
-		const newInput = event.target.value;
-		setName(newInput);
-		localStorage.setItem('input', newInput);
-		socket.emit('codeChange', { code: newInput });
+	const handleCCodeChange = (newValue) => {
+		setCCode(newValue);
+		socket.emit('cCodeChange', { code: newValue });
+		localStorage.setItem('c-code', newValue);
+	};
+
+	const handleCppCodeChange = (newValue) => {
+		setCppCode(newValue);
+		socket.emit('cppCodeChange', { code: newValue });
+		localStorage.setItem('cpp-code', newValue);
+	};
+
+	const handlePyCodeChange = (newValue) => {
+		setPyCode(newValue);
+		localStorage.setItem('py-code', newValue);
+		socket.emit('pyCodeChange', { code: newValue });
+	};
+
+	const handleJavaCodeChange = (newValue) => {
+		setJavaCode(newValue);
+		socket.emit('javaCodeChange', { code: newValue });
+		localStorage.setItem('java-code', newValue);
 	};
 
 	const answerCall = () => {
@@ -137,7 +175,18 @@ const ContextProvider = ({ children }) => {
 				setEditorFontSize,
 				currentWindow,
 				setCurrentWindow,
-				message,
+				cCode,
+				setCCode,
+				javaCode,
+				setJavaCode,
+				pyCode,
+				setPyCode,
+				cppCode,
+				setCppCode,
+				handleCCodeChange,
+				handleCppCodeChange,
+				handleJavaCodeChange,
+				handlePyCodeChange,
 			}}
 		>
 			{children}

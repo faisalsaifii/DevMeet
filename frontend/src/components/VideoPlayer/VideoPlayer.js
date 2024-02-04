@@ -20,7 +20,7 @@ const VideoPlayer = () => {
 		>
 			{callAccepted && !callEnded && (
 				<div
-					className={`relative flex items-center justify-center rounded-md bg-gray-100 dark:bg-black ${
+					className={`relative flex items-center justify-center rounded-md bg-neutral-100 dark:bg-black ${
 						currentWindow === 'meet' ? 'mr-2' : 'mb-2'
 					}`}
 				>
@@ -30,14 +30,14 @@ const VideoPlayer = () => {
 						autoPlay
 						className='rounded-md max-h-full max-w-full w-auto h-auto overflow-hidden'
 					/>
-					<span className='font-black text-gray-400 bottom-1 absolute'>
+					<span className='font-black text-neutral-400 bottom-1 absolute'>
 						{call.name || 'Someone'}
 					</span>
 				</div>
 			)}
 			{stream && (
 				<div
-					className={`relative flex items-center justify-center rounded-md bg-gray-100 dark:bg-black ${
+					className={`relative flex items-center justify-center rounded-md bg-neutral-100 dark:bg-black ${
 						currentWindow === 'meet' ? '' : ''
 					}`}
 				>
@@ -48,7 +48,7 @@ const VideoPlayer = () => {
 						autoPlay
 						className='rounded-md max-h-full max-w-full w-auto h-auto overflow-hidden'
 					/>
-					<span className='font-black text-gray-400 bottom-1 absolute'>
+					<span className='font-black text-neutral-400 bottom-1 absolute'>
 						{name || 'Me'}
 					</span>
 				</div>

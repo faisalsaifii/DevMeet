@@ -28,13 +28,13 @@ const Options = () => {
 				}`}
 			>
 				<input
-					className='w-full dark:bg-gray-900 focus:outline-none rounded-l-md p-4 border-0 font-thin'
+					className='w-full dark:bg-neutral-900 focus:outline-none rounded-l-md p-4 border-0 font-thin'
 					type='text'
 					value={name}
 					onChange={(e) => setName(e.target.value)}
 					placeholder='Name'
 				/>
-				<div className='p-2 dark:bg-gray-900 bg-white rounded-r-md'>
+				<div className='p-2 dark:bg-neutral-900 bg-white rounded-r-md'>
 					<CopyToClipboard text={me}>
 						<button
 							className='bg-purple-400 rounded-md h-10 w-10 p-2'
@@ -51,13 +51,13 @@ const Options = () => {
 				}`}
 			>
 				<input
-					className='w-full dark:bg-gray-900 focus:outline-none rounded-l-md p-4 border-0 font-thin'
+					className='w-full dark:bg-neutral-900 focus:outline-none rounded-l-md p-4 border-0 font-thin'
 					type='text'
 					value={idToCall}
 					onChange={(e) => setIdToCall(e.target.value)}
 					placeholder='ID to Call'
 				/>
-				<div className='p-2 dark:bg-gray-900 bg-white rounded-r-md'>
+				<div className='p-2 dark:bg-neutral-900 bg-white rounded-r-md'>
 					{callAccepted && !callEnded ? (
 						<button
 							onClick={leaveCall}
