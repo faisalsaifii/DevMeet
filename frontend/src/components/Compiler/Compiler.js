@@ -4,19 +4,24 @@ import CodeEditor from '../CodeEditor';
 import { SocketContext } from '../../Context';
 
 const Compiler = () => {
-	const { editorTheme, setEditorTheme, editorFontSize, setEditorFontSize } = useContext(SocketContext);
+	const { editorTheme, setEditorTheme, editorFontSize, setEditorFontSize } =
+		useContext(SocketContext);
 	// Code
-	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '')
-	const [jsCode, setJsCode] = useState(localStorage.getItem('js-code') || '')
-	const [pyCode, setPyCode] = useState(localStorage.getItem('py-code') || '')
-	const [cppCode, setCppCode] = useState(localStorage.getItem('cpp-code') || '')
+	const [cCode, setCCode] = useState(localStorage.getItem('c-code') || '');
+	const [jsCode, setJsCode] = useState(localStorage.getItem('js-code') || '');
+	const [pyCode, setPyCode] = useState(localStorage.getItem('py-code') || '');
+	const [cppCode, setCppCode] = useState(
+		localStorage.getItem('cpp-code') || ''
+	);
 
-	const [input, setInput] = useState(localStorage.getItem('input') || '')
-	const [output, setOutput] = useState(localStorage.getItem('output') || '')
+	const [input, setInput] = useState(localStorage.getItem('input') || '');
+	const [output, setOutput] = useState(localStorage.getItem('output') || '');
 	const [languageId, setLanguageId] = useState(
 		localStorage.getItem('language_id') || 71
 	);
-	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-io-window') || 'output')
+	const [currentWindow, setCurrentWindow] = useState(
+		localStorage.getItem('current-io-window') || 'output'
+	);
 
 	useEffect(() => {
 		localStorage.setItem('c-code', cCode);
@@ -27,7 +32,16 @@ const Compiler = () => {
 		localStorage.setItem('language_id', languageId);
 		localStorage.setItem('input', input);
 		localStorage.setItem('current-io-window', currentWindow);
-	}, [languageId, input, output, currentWindow, cCode, cppCode, jsCode, pyCode])
+	}, [
+		languageId,
+		input,
+		output,
+		currentWindow,
+		cCode,
+		cppCode,
+		jsCode,
+		pyCode,
+	]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -39,28 +53,36 @@ const Compiler = () => {
 			params: {
 				base64_encoded: 'true',
 				wait: 'true',
-				fields: '*'
+				fields: '*',
 			},
 			headers: {
 				'content-type': 'application/json',
 				'Content-Type': 'application/json',
 				'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-				'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
+				'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
 			},
 			data: {
 				language_id: languageId,
-				source_code: btoa(languageId === '50' ? cCode : languageId === '54' ? cppCode : languageId === '62' ? jsCode : pyCode),
-				stdin: btoa(input)
-			}
+				source_code: btoa(
+					languageId === '50'
+						? cCode
+						: languageId === '54'
+						? cppCode
+						: languageId === '62'
+						? jsCode
+						: pyCode
+				),
+				stdin: btoa(input),
+			},
 		};
 		try {
 			const response = await axios.request(options);
-			setOutput(atob(response.data["stdout"]));
+			setOutput(atob(response.data['stdout']));
 		} catch (error) {
 			console.error(error);
 			setOutput('Something went wrong');
 		}
-	}
+	};
 
 	return (
 		<>
@@ -68,10 +90,18 @@ const Compiler = () => {
 				<span className='flex items-center justify-between rounded-t-md bg-white dark:bg-slate-900 p-2 pl-3 text-md dark:text-gray-400'>
 					<span className='font-bold'>Code</span>
 					<div>
-						<input value={editorFontSize} onChange={e => setEditorFontSize(e.target.value)} title='Font Size' className='dark:bg-gray-800 rounded-md bg-white font-thin mr-2 text-xs p-2 focus:outline-none w-20 appearance-none' type='number' max={52} min={1} />
+						<input
+							value={editorFontSize}
+							onChange={(e) => setEditorFontSize(e.target.value)}
+							title='Font Size'
+							className='dark:bg-gray-800 rounded-md bg-white font-thin mr-2 text-xs p-2 focus:outline-none w-20 appearance-none'
+							type='number'
+							max={52}
+							min={1}
+						/>
 						<select
 							value={editorTheme}
-							onChange={e => setEditorTheme(e.target.value)}
+							onChange={(e) => setEditorTheme(e.target.value)}
 							title='Theme'
 							className='dark:bg-gray-800 rounded-md bg-white font-thin mr-2 text-xs p-2 appearance-none'
 						>
@@ -80,7 +110,7 @@ const Compiler = () => {
 						</select>
 						<select
 							value={languageId}
-							onChange={e => setLanguageId(e.target.value)}
+							onChange={(e) => setLanguageId(e.target.value)}
 							title='Language'
 							className='dark:bg-gray-800 rounded-md bg-white font-thin text-xs p-2 appearance-none'
 						>
@@ -99,33 +129,73 @@ const Compiler = () => {
 						</button>
 					</div>
 				</span>
-				{
-					languageId === '50' ? (
-						<CodeEditor code={cCode} setCode={setCCode} language={'c'} />
-					) : languageId === '54' ? (
-						<CodeEditor code={cppCode} setCode={setCppCode} language={'cpp'} />
-					) : languageId === '62' ? (
-						<CodeEditor code={jsCode} setCode={setJsCode} language={'java'} />
-					) : languageId === '71' ? (
-						<CodeEditor code={pyCode} setCode={setPyCode} language={'python'} />
-					) : <></>
-				}
-			</div >
+				{languageId === '50' ? (
+					<CodeEditor
+						code={cCode}
+						setCode={setCCode}
+						language={'c'}
+					/>
+				) : languageId === '54' ? (
+					<CodeEditor
+						code={cppCode}
+						setCode={setCppCode}
+						language={'cpp'}
+					/>
+				) : languageId === '62' ? (
+					<CodeEditor
+						code={jsCode}
+						setCode={setJsCode}
+						language={'java'}
+					/>
+				) : languageId === '71' ? (
+					<CodeEditor
+						code={pyCode}
+						setCode={setPyCode}
+						language={'python'}
+					/>
+				) : (
+					<></>
+				)}
+			</div>
 			<div className='flex flex-col p-2 h-2/6 pb-0'>
 				<span className='flex rounded-t-md bg-white dark:bg-slate-900 p-2 text-md dark:text-gray-400'>
 					<div className='rounded-md bg-gray-100 dark:bg-black p-1 font-thin'>
-						<button className={`p-1 px-3 rounded-md ${currentWindow === 'output' ? 'dark:bg-gray-900 bg-white' : 'dark:bg-black bg-gray-100'}`} onClick={_ => setCurrentWindow('output')}>Output</button>
-						<button className={`p-1 px-3 rounded-md ${currentWindow === 'input' ? 'dark:bg-gray-900 bg-white' : 'dark:bg-black bg-gray-100'}`} onClick={_ => setCurrentWindow('input')}>Input</button>
+						<button
+							className={`p-1 px-3 rounded-md ${
+								currentWindow === 'output'
+									? 'dark:bg-gray-900 bg-white'
+									: 'dark:bg-black bg-gray-100'
+							}`}
+							onClick={(_) => setCurrentWindow('output')}
+						>
+							Output
+						</button>
+						<button
+							className={`p-1 px-3 rounded-md ${
+								currentWindow === 'input'
+									? 'dark:bg-gray-900 bg-white'
+									: 'dark:bg-black bg-gray-100'
+							}`}
+							onClick={(_) => setCurrentWindow('input')}
+						>
+							Input
+						</button>
 					</div>
 				</span>
-				{
-					currentWindow === 'output' ? (
-						<CodeEditor code={output} setCode={setOutput} language={'none'} />
-					) : (
-						<CodeEditor code={input} setCode={setInput} language={'none'} />
-					)
-				}
-			</div >
+				{currentWindow === 'output' ? (
+					<CodeEditor
+						code={output}
+						setCode={setOutput}
+						language={'none'}
+					/>
+				) : (
+					<CodeEditor
+						code={input}
+						setCode={setInput}
+						language={'none'}
+					/>
+				)}
+			</div>
 		</>
 	);
 };

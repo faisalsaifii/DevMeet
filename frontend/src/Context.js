@@ -13,9 +13,16 @@ const ContextProvider = ({ children }) => {
 	const [name, setName] = useState('');
 	const [call, setCall] = useState({});
 	const [me, setMe] = useState('');
-	const [editorTheme, setEditorTheme] = useState(localStorage.getItem('editor-theme') || 'vs-dark');
-	const [editorFontSize, setEditorFontSize] = useState(localStorage.getItem('editor-font-size') || 18);
-	const [currentWindow, setCurrentWindow] = useState(localStorage.getItem('current-window') || 'both');
+	const [message, setMessage] = useState('');
+	const [editorTheme, setEditorTheme] = useState(
+		localStorage.getItem('editor-theme') || 'vs-dark'
+	);
+	const [editorFontSize, setEditorFontSize] = useState(
+		localStorage.getItem('editor-font-size') || 18
+	);
+	const [currentWindow, setCurrentWindow] = useState(
+		localStorage.getItem('current-window') || 'both'
+	);
 
 	const myVideo = useRef();
 	const userVideo = useRef();
@@ -25,7 +32,7 @@ const ContextProvider = ({ children }) => {
 		localStorage.setItem('editor-theme', editorTheme);
 		localStorage.setItem('editor-font-size', editorFontSize);
 		localStorage.setItem('current-window', currentWindow);
-	}, [editorTheme, editorFontSize, currentWindow])
+	}, [editorTheme, editorFontSize, currentWindow]);
 
 	useEffect(() => {
 		navigator.mediaDevices
@@ -42,6 +49,21 @@ const ContextProvider = ({ children }) => {
 			setCall({ isReceivingCall: true, from, name: callerName, signal });
 		});
 	}, []);
+
+	useEffect(() => {
+		socket.on('receiveMessage', (message) => {
+			setMessage(message);
+			console.log(message);
+		});
+	}, []);
+
+	const input = (event) => {
+		event.preventDefault();
+		const newInput = event.target.value;
+		setName(newInput);
+		localStorage.setItem('input', newInput);
+		socket.emit('codeChange', { code: newInput });
+	};
 
 	const answerCall = () => {
 		setCallAccepted(true);
@@ -113,7 +135,9 @@ const ContextProvider = ({ children }) => {
 				setEditorTheme,
 				editorFontSize,
 				setEditorFontSize,
-				currentWindow, setCurrentWindow
+				currentWindow,
+				setCurrentWindow,
+				message,
 			}}
 		>
 			{children}
