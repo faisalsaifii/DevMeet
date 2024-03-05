@@ -1,33 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap");
 
 :root {
-	--foreground-color: #000000;
-	--background-color: #f2f2f2;
+  --foreground-color: #000000;
+  --background-color: #f2f2f2;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-color: #ffffff;
-		--background-color: #000000;
-	}
+  :root {
+    --foreground-color: #ffffff;
+    --background-color: #000000;
+  }
 }
 
 body {
-	color: var(--foreground-color);
-	background: var(--background-color);
-	height: 100dvh;
+  color: var(--foreground-color);
+  background: var(--background-color);
+  height: 100dvh;
 }
 
 #root {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .monaco-editor,
 .overflow-guard {
-	border-radius: 0.25rem;
+  border-radius: 0.25rem;
 }
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home img {
+  height: 300px;
+}
+
+.home h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.home span {
+  font-weight: normal;
+}
+/* .home p {
+  font-weight: 500;
+} */
