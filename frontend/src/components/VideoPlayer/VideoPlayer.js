@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { SocketContext } from '../../Context';
+import React, { useContext } from 'react'
+import { SocketContext } from '../../Context'
 
 const VideoPlayer = () => {
 	const {
@@ -11,11 +11,13 @@ const VideoPlayer = () => {
 		stream,
 		call,
 		currentWindow,
-	} = useContext(SocketContext);
+	} = useContext(SocketContext)
 	return (
 		<div
 			className={`flex h-full ${
-				currentWindow !== 'meet' ? 'flex-col' : 'pb-20'
+				currentWindow !== 'meet'
+					? 'flex-col'
+					: 'justify-center items-center pb-20'
 			}`}
 		>
 			{callAccepted && !callEnded && (
@@ -54,7 +56,7 @@ const VideoPlayer = () => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
-export default VideoPlayer;
+export default VideoPlayer
