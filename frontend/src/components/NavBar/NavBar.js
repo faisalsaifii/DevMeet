@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import { SocketContext } from '../../Context';
-import Github from '../../icons/Github';
+import { useContext } from 'react'
+import { SocketContext } from '../../Context'
+import Github from '../../icons/Github'
 
 const NavBar = ({ setShowInfo }) => {
-	const { currentWindow, setCurrentWindow } = useContext(SocketContext);
+	const { currentWindow, setCurrentWindow } = useContext(SocketContext)
 
 	return (
 		<nav className='absolute top-0 w-full h-18 flex items-center p-2 justify-between'>
@@ -26,7 +26,7 @@ const NavBar = ({ setShowInfo }) => {
 					Meet
 				</button>
 				<button
-					className={`p-1 px-3 rounded-md ${
+					className={`hidden md:inline p-1 px-3 rounded-md ${
 						currentWindow === 'both'
 							? 'dark:bg-black bg-white'
 							: 'dark:bg-neutral-900 bg-neutral-200'
@@ -51,7 +51,7 @@ const NavBar = ({ setShowInfo }) => {
 					href='https://github.com/sponsors/faisalsaifii'
 					target='_blank'
 					rel='noreferrer'
-					className='flex p-2 items-center justify-center mx-2 text-xs font-thin rounded-md bg-neutral-200 dark:bg-neutral-800'
+					className='hidden md:flex p-2 items-center justify-center mx-2 text-xs font-thin rounded-md bg-neutral-200 dark:bg-neutral-800'
 				>
 					Sponsor
 				</a>
@@ -72,7 +72,7 @@ const NavBar = ({ setShowInfo }) => {
 				</button>
 			</div>
 		</nav>
-	);
-};
+	)
+}
 
-export default NavBar;
+export default NavBar

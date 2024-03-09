@@ -17,13 +17,15 @@ const VideoPlayer = () => {
 			className={`flex h-full ${
 				currentWindow !== 'meet'
 					? 'flex-col'
-					: 'justify-center items-center pb-20'
+					: 'flex-col md:flex-row justify-start items-center md:justify-center'
 			}`}
 		>
 			{callAccepted && !callEnded && (
 				<div
 					className={`relative flex items-center justify-center rounded-md bg-neutral-100 dark:bg-black ${
-						currentWindow === 'meet' ? 'mr-2' : 'mb-2'
+						currentWindow === 'meet'
+							? 'mb-2 md:mb-0 md:mr-2'
+							: 'mb-2'
 					}`}
 				>
 					<video

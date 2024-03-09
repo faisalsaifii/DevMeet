@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { SocketContext } from '../../Context';
+import React, { useContext, useState } from 'react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { SocketContext } from '../../Context'
 
 const Options = () => {
 	const {
@@ -12,19 +12,23 @@ const Options = () => {
 		callUser,
 		callEnded,
 		currentWindow,
-	} = useContext(SocketContext);
+	} = useContext(SocketContext)
 
-	const [idToCall, setIdToCall] = useState('');
+	const [idToCall, setIdToCall] = useState('')
 
 	return (
 		<div
 			className={`flex w-full ${
-				currentWindow === 'meet' ? 'p-2' : 'flex-col'
+				currentWindow === 'meet'
+					? 'p-2 flex-col md:flex-row'
+					: 'flex-col'
 			} absolute left-0 bottom-0 z-20`}
 		>
 			<div
 				className={`flex items-center ${
-					currentWindow === 'meet' ? 'w-1/2 mr-2' : 'mt-2'
+					currentWindow === 'meet'
+						? 'w-full md:w-1/2 mb-2 md:mb-0 md:mr-2'
+						: 'mt-2'
 				}`}
 			>
 				<input
@@ -47,7 +51,7 @@ const Options = () => {
 			</div>
 			<div
 				className={`flex items-center ${
-					currentWindow === 'meet' ? 'w-1/2' : 'mt-2'
+					currentWindow === 'meet' ? 'w-full md:w-1/2' : 'mt-2'
 				}`}
 			>
 				<input
@@ -84,7 +88,7 @@ const Options = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Options;
+export default Options
